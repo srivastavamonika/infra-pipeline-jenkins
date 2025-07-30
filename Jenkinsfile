@@ -15,22 +15,9 @@ pipeline {
 
    stage('Terraform Init') {
      steps {
-       bat 'rm -rf .terraform .terraform.lock.hcl || true'
        bat 'terraform init'
        }
     }
-
-    stage('Terraform Providers') {
-      steps {
-        bat 'terraform providers'
-        }
-    }
-
-     stage('Show Files') {
-       steps {
-         bat 'find . -name "*.tf" -exec cat {} \\;'
-         }
-     }
 
     stage('Plan Infra') {
       steps {
