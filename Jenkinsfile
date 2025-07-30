@@ -15,20 +15,20 @@ pipeline {
 
     stage('Init Terraform') {
       steps {
-        sh 'terraform init'
+        bat 'terraform init'
       }
     }
 
     stage('Plan Infra') {
       steps {
-        sh 'terraform plan -out=tfplan'
+        bat 'terraform plan -out=tfplan'
       }
     }
 
     stage('Apply Infra') {
       steps {
         input message: 'Approve to apply changes?'
-        sh 'terraform apply tfplan'
+        bat 'terraform apply tfplan'
       }
     }
   }
