@@ -19,6 +19,12 @@ pipeline {
       }
     }
 
+    stage('Show Providers') {
+      steps {
+        bat 'terraform providers'
+      }
+    }
+
     stage('Plan Infra') {
       steps {
         bat 'terraform plan -out=tfplan'
